@@ -1,1 +1,139 @@
-<p>signup works!</p>
+<form [formGroup]="accountForm" class="form-container" (ngSubmit)="onSubmit()">
+    <h2>SignUp Page</h2>
+
+    <div class="row">
+        <mat-form-field class="form-field">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName" required>
+            <mat-error
+                *ngIf="accountForm.get('firstName')?.hasError('required') && accountForm.get('firstName')?.touched">
+                First Name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" required>
+            <mat-error
+                *ngIf="accountForm.get('lastName')?.hasError('required') && accountForm.get('lastName')?.touched">
+                Last Name is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country" required>
+            <mat-option value="US">United States</mat-option>
+            <mat-option value="UK">United Kingdom</mat-option>
+            <mat-option value="IN">India</mat-option>
+        </mat-select>
+        <mat-error *ngIf="accountForm.get('country')?.hasError('required') && accountForm.get('country')?.touched">
+            Country Name is required
+        </mat-error>
+    </mat-form-field>
+
+    <div class="row">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" formControlName="email" required>
+            <mat-error *ngIf="accountForm.get('email')?.hasError('required') && accountForm.get('email')?.touched">
+                Email is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" required>
+            <mat-error *ngIf="accountForm.get('phone')?.hasError('required') && accountForm.get('phone')?.touched">
+                Phone Number is required
+            </mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <div class="row">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" required>
+            <mat-error *ngIf="accountForm.get('city')?.hasError('required') && accountForm.get('city')?.touched">
+                City Name is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Zip/Postal Code</mat-label>
+            <input matInput formControlName="zip">
+        </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address">
+    </mat-form-field>
+
+    <div class="row">
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Skype ID</mat-label>
+            <input matInput formControlName="skypeId">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>IB Referral Code</mat-label>
+            <input matInput formControlName="ibReferralCode">
+        </mat-form-field>
+    </div>
+
+    <mat-checkbox formControlName="isIB" (change)="onIBToggle()">Interested in becoming an IB?</mat-checkbox>
+
+    <div *ngIf="accountForm.get('isIB')?.value">
+        <div class="row">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Company Name</mat-label>
+                <input matInput formControlName="companyName">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Years Of Experience</mat-label>
+                <mat-select formControlName="experience">
+                    <mat-option value="1-3">1 - 3</mat-option>
+                    <mat-option value="3-5">3 - 5</mat-option>
+                    <mat-option value="5+">5+</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="row">
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>Average Volume Per Month</mat-label>
+                <input matInput formControlName="volume">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="form-field">
+                <mat-label>No Of Existing Clients</mat-label>
+                <input matInput formControlName="clients">
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <div class="captcha-container">
+        <div class="captcha-box">
+            <span class="captcha-text">{{ generatedCaptcha }}</span>
+            <button mat-icon-button type="button" (click)="refreshCaptcha()" aria-label="Refresh captcha">
+                <mat-icon>refresh</mat-icon>
+            </button>
+        </div>
+
+        <mat-form-field appearance="fill" class="captcha-input">
+            <mat-label>Enter Captcha</mat-label>
+            <input matInput formControlName="captcha" required>
+            <mat-error *ngIf="accountForm.get('captcha')?.hasError('required') && accountForm.get('captcha')?.touched">
+                Captcha is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
