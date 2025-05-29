@@ -100,7 +100,7 @@ export class SignupComponent {
 
   if (this.accountForm.valid) {
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/sos-settings']);
   }
 }
 
