@@ -6,12 +6,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'signup', pathMatch: 'full' },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
-  declarations: [SignupComponent, LoginComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), MatButtonModule]
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    SignupComponent,
+    LoginComponent,
+    MatButtonModule]
 })
 export class AuthorizationModule {}

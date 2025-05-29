@@ -1,0 +1,10 @@
+<div *ngIf="nurse">
+  <h2>Nurse Details</h2>
+  <p>Name: {{ nurse.name }}</p>
+  <p>Specialization: {{ nurse.specialization }}</p>
+  <p>Ratings: {{ nurse.ratings }} / 5</p>
+  <p>Booking Confirmed!</p>
+</div>
+<div *ngIf="!nurse">
+  <p>Loading nurse details...</p>
+</div>

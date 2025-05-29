@@ -1,0 +1,9 @@
+<div>
+  <h2>Booking Confirmation</h2>
+  <p *ngIf="!nurseAccepted">Waiting for nurse to accept...</p>
+  <div *ngIf="nurseAccepted">
+    <p>Nurse has accepted your request!</p>
+    <p>Time remaining to complete payment: {{ paymentTimer }} seconds</p>
+    <button (click)="makePayment()">Complete Payment</button>
+  </div>
+</div>

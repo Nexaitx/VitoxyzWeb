@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option *ngFor="let gender of genders" [value]="gender">{{ gender }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Experience Level</mat-label>
+    <mat-select formControlName="experience">
+      <mat-option *ngFor="let exp of experienceLevels" [value]="exp">{{ exp }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Specialization</mat-label>
+    <mat-select formControlName="specialization">
+      <mat-option *ngFor="let spec of specializations" [value]="spec">{{ spec }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Language</mat-label>
+    <mat-select formControlName="language">
+      <mat-option *ngFor="let lang of languages" [value]="lang">{{ lang }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Location</mat-label>
+    <input matInput formControlName="location" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Time Slot</mat-label>
+    <input matInput formControlName="timeSlot" type="datetime-local" required>
+  </mat-form-field>
+</form>
